@@ -73,5 +73,47 @@ function findOutlier(integers){
 }
 
 /*
-
+    In the first line I set the text to lowercase so it would read the string as case-insensitive. Then I initialized an object and set a counter to zero. Through the loop, I checked to see if each letter in the string was part of the object. If not, I created the key and set the value to zero as I was only counting duplicates. If it was, I incremented the value by one. Finally, I looped through the keys in the array to check if they were greater than or equal to one. If the condition was met, I incrememted the counter and then returned its value. 
 */
+function duplicateCount(text) {
+    let word = text.toLowerCase()
+    const duplicateObj = {};
+    let count = 0;
+
+    for (let letter of word) {
+        if (letter in duplicateObj) {
+            duplicateObj[letter]++
+        }
+        else {
+            duplicateObj[letter] = 0;
+        }
+
+        for (let key in duplicateObj) {
+            if (duplicateObj[key] >= 1) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+/*
+    In the first line I created an array to hold the elements of the given array without zero. Next, I created a counter to hold the number of times zero appears in the array. Looping through the given array, I am able to increment the counter by one if a zero appears, otherwise I am appending the elements to a new array. With a final for loop, I check to see if the counter is greater than zero. If so, I append the number zero for however many times the counter says it shows up.
+*/
+function moveZeros(arr) {
+    let arrTwo = [];
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === 0) {
+            count++;
+        }
+        else {
+            arrTwo.push(arr[i]);
+        }
+    }
+    if (count > 0) {
+        for (let i = 1; i <= count; i++) {
+            arrTwo.push(0);
+        }
+    }
+    return arrTwo;
+}
