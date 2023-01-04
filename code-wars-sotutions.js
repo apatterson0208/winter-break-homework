@@ -117,3 +117,27 @@ function moveZeros(arr) {
     }
     return arrTwo;
 }
+
+/*
+    In the first line I split the string by each word. Then I set a string to hold the -ay extension of each word, an array to hold the pig latin and regex to make sure we avoid punctuation. I looped through each word in the string, and if it wasn't punctuation then I took in the first letter of each word, appending 'ay'. Once that was done, I pushed it into the new string, removed the first letter and concatenated the latinized word. If it was punctuation, I just pushed it into the array as normal. Finally, I turned the array into a string and returned it.
+*/
+function pigIt(str){
+// split the string by each word
+  // take the first index of each word in the array
+  // add "ay" to the end of the first index in a variable
+  // push it back to the end of the element
+  let word = str.split(' ');
+  let latinize = '';
+  let pigArr = [];
+  let regex = /[a-zA-Z]/g;
+  
+  for (let part of word){
+    latinize = part[0] + 'ay';
+    if (part.match(regex)){
+      pigArr.push(part.substring(1).concat(latinize));
+    } else {
+      pigArr.push(part);
+    }
+  }
+  return pigArr.join(' ');
+}
